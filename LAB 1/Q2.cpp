@@ -54,7 +54,7 @@ int main(){
 
     // Case I: Showing how shallow copy affects both the object when one gets changed;
     // This frees the old memory ("Richard") and allocates "Christopher".
-    // But Student2 is still pointing to the freed memory from Student1.
+    // But Student2 is still pointing to the freed memory from Student3.
     // So Student2’s name becomes a dangling pointer → garbage value.
     cout << "CASE I: Dangling Pointer Issue when memory is freed to write a new data" << endl;
     Student3.setStudentName("Christopher");
