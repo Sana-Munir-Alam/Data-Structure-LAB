@@ -72,5 +72,11 @@ class SingleLinkedList {
             Pre -> next = newNode;          // Now the Specific Location points to the New Node;
             newNode -> next = Current;      // Now the new node will point to the rest of the linked list node
         }
+
+        void DeleteFromStart(){
+            Node* Temp = Head;  // Start from the beginning of the List
+            Head = Head->next;
+            delete Temp;
+        }
         
 };
