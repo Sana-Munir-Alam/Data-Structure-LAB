@@ -46,7 +46,7 @@ class SingleLinkedList {
             newNode -> next = Tail;         // Now the new node Next Pointer points to NULL
         }
         // A function that creates a linkedList whenever an object is created in MAIN
-        // Adding Node in Between
+        // Adding Node in Between MY STYLE
         void Between(int Val, int StoredValue){
             Node* newNode = new Node(Val);  // A node is being created in the Linked List with the required Value
             Node* Temp = Head;              // A temporaray Pointer That Has Head Address so that it can traverse across the LinkedList from START to find the Part where we want to add the data
@@ -59,7 +59,7 @@ class SingleLinkedList {
             newNode -> next = Temp->next;   // Storing the next location of other NODES after the addition of a NEW NODE in new node next pointer
             Temp -> next = newNode;         // Now The Temp that was pointing to Between OLD Data Next initially will now point to the NEW NODE location 
         }
-
+        // SIR STYLE OF INSERTING VALUE IN BETWEEN
         void Middle(int Val, int pos){
             Node* newNode = new Node(Val);  // A node is being created in the Linked List with the required Value
             Node* Current = Head;
@@ -76,6 +76,17 @@ class SingleLinkedList {
         void DeleteFromStart(){
             Node* Temp = Head;  // Start from the beginning of the List
             Head = Head->next;
+            delete Temp;
+        }
+
+        void DeleteFromEnd(){
+            Node* Temp = Head;              // Start from the beginning of the List
+            Node* Pre;                      // A pointer that keeps record of previous Node
+            while(Temp -> next != Tail){    // Traverse across the List as long as Temp Next pointer aint's pointing to NULL
+                Pre = Temp;                 // Storing Old Location
+                Temp = Temp -> next;        // Move to the next Location
+            }
+            Pre -> next = Tail;             // Changing Second Last Value to point to Tail aka NULL
             delete Temp;
         }
         
