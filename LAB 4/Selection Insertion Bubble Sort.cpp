@@ -45,6 +45,19 @@ void InsertionSort(int Array[], int Size) {
     }
 }
 
+// Function to perform bubble sort on Array
+void BubbleSort(int Array[], int Size) {
+    // Outer loop: controls number of passes through the array
+    for (int i = 0; i < Size - 1; i++) {
+        // Inner loop: compares adjacent elements and swaps if needed. After each pass, the largest element moves to its correct position
+        for (int j = 0; j < Size - i - 1; j++) {    // The (Size - i - 1) ensures we don't check already sorted elements
+            if (Array[j] > Array[j + 1]) {          // Compare adjacent elements
+                swap(Array[j], Array[j + 1]);       // Swap elements if they're in the wrong order
+            }
+        }
+    }
+}
+
 // Function to print Array elements
 void PrintArray(int Array[], int Size, string message = "Array: ") {
     cout << message;
@@ -58,6 +71,7 @@ int main() {
     int Array[10] = {14, 12, 1, 4, 2, 4, 5, 21, 17, 6};
     int SelectionArray[10] = {21, 13, 14, 7, 18, 25, 32, 12, 17, 10};
     int InsertionArray[10] = {32, 5, 15, 0, 34, 11, 25, 8, 12, 1};
+    int BubbleArray[10] = {45, 23, 9, 18, 3, 29, 14, 7, 31, 2};
     int Size = 10;
     
     // Display original Array
@@ -81,5 +95,12 @@ int main() {
     InsertionSort(InsertionArray, Size);
     PrintArray(InsertionArray, Size, "After Insertion Sort: ");
     
+    cout << endl;
+
+    // Perform and display bubble sort
+    cout << "=== BUBBLE SORT ===" << endl;
+    PrintArray(BubbleArray, Size, "Before Bubble Sort: ");
+    BubbleSort(BubbleArray, Size);
+    PrintArray(BubbleArray, Size, "After Bubble Sort: ");
     return 0;
 }
