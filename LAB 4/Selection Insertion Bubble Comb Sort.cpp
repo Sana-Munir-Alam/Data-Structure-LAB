@@ -58,6 +58,28 @@ void BubbleSort(int Array[], int Size) {
     }
 }
 
+// Function to perform comb sort on Array
+void CombSort(int Array[], int Size) {
+    int gap = Size;           // Initialize gap to the full array size
+    bool swapped = true;      // Flag to track if any swaps occurred in the last pass
+    
+    // Continue sorting until gap becomes 1 AND no swaps occurred (array is sorted)
+    while (gap > 1 || swapped) {
+        gap = (gap * 10) / 13;   // Reduce the gap using the shrink factor (approximately 1.3)
+        if (gap < 1) gap = 1;    // Ensure gap never goes below 1 (like bubble sort)
+        swapped = false;         // Reset swap flag for this pass
+        
+        // Perform a single pass through the array with the current gap
+        for (int i = 0; i + gap < Size; i++) {
+            if (Array[i] > Array[i + gap]) {        // Compare elements that are 'gap' distance apart
+                swap(Array[i], Array[i + gap]);     // Swap elements if they're in the wrong order
+                swapped = true;                     // Set flag indicating a swap occurred
+            }
+        }
+    }
+}
+
+
 // Function to print Array elements
 void PrintArray(int Array[], int Size, string message = "Array: ") {
     cout << message;
@@ -72,6 +94,7 @@ int main() {
     int SelectionArray[10] = {21, 13, 14, 7, 18, 25, 32, 12, 17, 10};
     int InsertionArray[10] = {32, 5, 15, 0, 34, 11, 25, 8, 12, 1};
     int BubbleArray[10] = {45, 23, 9, 18, 3, 29, 14, 7, 31, 2};
+    int CombArray[10] = {12, 34, 54, 2, 3, 78, 23, 9, 45, 11};
     int Size = 10;
     
     // Display original Array
@@ -102,5 +125,11 @@ int main() {
     PrintArray(BubbleArray, Size, "Before Bubble Sort: ");
     BubbleSort(BubbleArray, Size);
     PrintArray(BubbleArray, Size, "After Bubble Sort: ");
+    
+    // Perform and display comb sort
+    cout << "=== COMB SORT ===" << endl;
+    PrintArray(CombArray, Size, "Before Comb Sort: ");
+    CombSort(CombArray, Size);
+    PrintArray(CombArray, Size, "After Comb Sort: ");
     return 0;
 }
