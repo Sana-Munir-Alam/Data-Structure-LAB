@@ -20,14 +20,11 @@ private:
             int parent = (index - 1) / 2;
             
             // Compare severity first, then timestamp if severity is equal
-            if (heap[parent].severity < heap[index].severity || 
-                (heap[parent].severity == heap[index].severity && 
-                 heap[parent].timestamp > heap[index].timestamp)) {
+            if (heap[parent].severity < heap[index].severity || (heap[parent].severity == heap[index].severity && heap[parent].timestamp > heap[index].timestamp)) {
                 swap(heap[parent], heap[index]);
                 index = parent;
-            } else {
-                break;
-            }
+            } 
+            else { break; }
         }
     }
 
@@ -38,17 +35,13 @@ private:
             int largest = index;
 
             if (left < size) {
-                if (heap[left].severity > heap[largest].severity ||
-                    (heap[left].severity == heap[largest].severity && 
-                     heap[left].timestamp < heap[largest].timestamp)) {
+                if (heap[left].severity > heap[largest].severity || (heap[left].severity == heap[largest].severity && heap[left].timestamp < heap[largest].timestamp)) {
                     largest = left;
                 }
             }
 
             if (right < size) {
-                if (heap[right].severity > heap[largest].severity ||
-                    (heap[right].severity == heap[largest].severity && 
-                     heap[right].timestamp < heap[largest].timestamp)) {
+                if (heap[right].severity > heap[largest].severity || (heap[right].severity == heap[largest].severity && heap[right].timestamp < heap[largest].timestamp)) {
                     largest = right;
                 }
             }
@@ -106,7 +99,6 @@ public:
         heap[0] = heap[size - 1];
         size--;
         heapifyDown(0);
-
         return true;
     }
 
